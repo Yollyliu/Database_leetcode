@@ -1,4 +1,4 @@
 # Database_leetcode
 
 
-The solutions that for question leetcode.
+The solutions that for leetcode database question.
