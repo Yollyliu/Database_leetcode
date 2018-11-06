@@ -1,0 +1,44 @@
+get the nth highest salary from the Employee table.
+
++----+--------+
+| Id | Salary |
++----+--------+
+| 1  | 100    |
+| 2  | 200    |
+| 3  | 300    |
++----+--------+
+For example, given the above Employee table, 
+the nth highest salary where n = 2 is 200. 
+If there is no nth highest salary, then the query should return null.
+
++------------------------+
+| getNthHighestSalary(2) |
++------------------------+
+| 200                    |
++------------------------+
+
+key: create limit offsit
+
+create function getNthHighestSalary(n int)returns int
+begin
+  set n=n-1
+  return (
+      select salary
+      from Employee
+      group by salary 
+      order by salary desc
+      limit 1 offsit n
+
+  );
+  end
+
+CREATE FUNCTION getNthHighestSalary(N INT) RETURNS INT
+BEGIN
+set N=N-1;
+RETURN (
+ifnull((select distinct Salary from Employee
+order by Salary desc
+limit 1 offset N),null)
+);
+END
+
