@@ -1,4 +1,4 @@
-select Request_at AS 'Day', Round((sum(Status != 'completed'))/count(*), 2) AS 'Cancellation Rate' 
+select Request_at AS 'Day', Round((sum(Status != 'completed'))/count(*), 2) as 'Cancellation Rate' 
 from Trips
 where Client_Id not in
 (
